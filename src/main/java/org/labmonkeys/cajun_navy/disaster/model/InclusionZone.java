@@ -40,4 +40,8 @@ public class InclusionZone extends PanacheEntityBase {
     @ManyToOne
     @JoinColumn(name = "disaster", nullable = false)
     private Disaster disaster;
+
+    public static void deleteByName(String name) {
+        delete("zoneName", name);
+    }
 }

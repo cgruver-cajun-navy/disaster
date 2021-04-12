@@ -44,4 +44,9 @@ public class Shelter extends PanacheEntityBase {
     @ManyToOne
     @JoinColumn(name = "disaster", nullable = false)
     private Disaster disaster;
+
+    public static Shelter updateShelter(Shelter entity) {
+        update("capacity = ?1, numRescued = ?2 where shelterId = ?3", entity.getCapacity(), entity.getNumRescued(), entity.getShelterId());
+        return findById(entity.shelterId);
+    }
 }

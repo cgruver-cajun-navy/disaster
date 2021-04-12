@@ -11,10 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -47,4 +44,8 @@ public class Disaster extends PanacheEntityBase {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "disaster", cascade = CascadeType.ALL)
     private List<Shelter> shelters;
+
+    public static Disaster findByName(String name) {
+        return find("disasterName", name).firstResult();
+    }
 }
