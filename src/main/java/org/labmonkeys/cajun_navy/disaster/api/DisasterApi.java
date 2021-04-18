@@ -90,7 +90,7 @@ public class DisasterApi {
     @Path("/shelter")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addShelter(ShelterDTO dto) {
+    public Response updateShelter(ShelterDTO dto) {
         return Response.ok(service.updateShelter(dto)).build();
     }
 

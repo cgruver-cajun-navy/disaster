@@ -4,12 +4,15 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import org.labmonkeys.cajun_navy.disaster.colaborators.incident.VictimDTO;
 import org.labmonkeys.cajun_navy.disaster.dto.DisasterDTO;
 import org.labmonkeys.cajun_navy.disaster.dto.InclusionZoneDTO;
+import org.labmonkeys.cajun_navy.disaster.dto.RescuedVictimDTO;
 import org.labmonkeys.cajun_navy.disaster.dto.ShelterDTO;
 import org.labmonkeys.cajun_navy.disaster.dto.ZonePointDTO;
 import org.labmonkeys.cajun_navy.disaster.model.Disaster;
 import org.labmonkeys.cajun_navy.disaster.model.InclusionZone;
+import org.labmonkeys.cajun_navy.disaster.model.RescuedVictim;
 import org.labmonkeys.cajun_navy.disaster.model.Shelter;
 import org.labmonkeys.cajun_navy.disaster.model.ZonePoint;
 import org.mapstruct.AfterMapping;
@@ -22,6 +25,14 @@ public interface DisasterMapper {
 
     List<Disaster> disasterDtosToEntities(List<DisasterDTO> dtos);
     List<DisasterDTO> disastersToDtos(List<Disaster> entities);
+    List<InclusionZone> inclusionZoneDtosToEntities(List<InclusionZoneDTO> dtos);
+    List<InclusionZoneDTO> inclusionZonesToDtos(List<InclusionZone> entities);
+    List<ZonePoint> zonePointDtosToEnities(List<ZonePointDTO> dtos);
+    List<ZonePointDTO> zonePointsToDtos(List<ZonePoint> entites);
+    List<Shelter> shelterDtosToEntites(List<ShelterDTO> dtos);
+    List<ShelterDTO> sheltersToDtos(List<Shelter> entites);
+    List<RescuedVictim> rescuedVictimDtosToEntities(List<RescuedVictimDTO> dtos);
+    List<RescuedVictimDTO> rescuedVictimsToDtos(List<RescuedVictim> entities);
 
     @Mapping(target = "latitude", ignore = true)
     @Mapping(target = "longitude", ignore = true)
@@ -103,4 +114,15 @@ public interface DisasterMapper {
         dto.setLatitude(new BigDecimal(entity.getLatitude()));
         dto.setLongitude(new BigDecimal(entity.getLongitude()));
     }
+
+    @Mapping(target = "id", ignore = true)
+    RescuedVictim rescuedVictimDtoToEntity(RescuedVictimDTO dto);
+
+    RescuedVictimDTO rescuedVictimToDto(RescuedVictim entity);
+
+    @Mapping(source = "victimId", target = "victimId")
+    @Mapping(source = "medicalNeeded", target = "medicalNeeded")
+    @Mapping(source = "victimName", target = "victimName")
+    @Mapping(source = "victimPhoneNumber", target = "victimPhoneNumber")
+    RescuedVictimDTO victimDtoToRescuedVictimDto(VictimDTO dto);
 }
