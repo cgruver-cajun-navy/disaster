@@ -56,6 +56,7 @@ public class DisasterProcessor {
         ShelterDTO nearestShelter = LocationHelper.findNearestShelter(incident, shelters);
         // Find nearest responder that matches Incident needs - medical kit & priority
         ResponderDTO responder = LocationHelper.findNearestResponder(incident, responders);
+        incident.setAssignmentAttempts(incident.getAssignmentAttempts()+1);
         if (responder == null) {
             //Unassigned, send message to invoke unassignedIncident()
             this.unassignedIncident(incident);

@@ -1,7 +1,5 @@
 package org.labmonkeys.cajun_navy.disaster.colaborators.mission;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
