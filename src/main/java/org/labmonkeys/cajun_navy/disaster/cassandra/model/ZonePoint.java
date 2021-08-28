@@ -1,11 +1,11 @@
-package org.labmonkeys.cajun_navy.disaster.colaborators.mission;
+package org.labmonkeys.cajun_navy.disaster.cassandra.model;
 
 import java.math.BigDecimal;
 
 import lombok.Data;
 
 @Data
-public class LocationDTO {
+public class ZonePoint {
     private BigDecimal latitude;
     private BigDecimal longitude;
 }

@@ -3,21 +3,13 @@ quarkus:
     name: disaster-service
   log:
     level: INFO
-  datasource:
-    db-kind: mariadb
-    jdbc:
-      driver: org.mariadb.jdbc.Driver
-      url: ${RDBMS_URL}
-      min-size: 5
-      max-size: 20
-      initial-size: 5
-      validation-query-sql: SELECT 1
-    username: ${DATASOURCE_USER}
-    password: ${DATASOURCE_PWD}
-  hibernate-orm:
-    database:
-      generation: update
-      dialect: org.hibernate.dialect.MariaDB103Dialect
+  cassandra:
+    contact-points: ${CASSANDRA_CONNECT}
+    local-datacenter: ${CASSANDRA_DATACENTER}
+    keyspace: ${CASSANDRA_KEYSPACE}
+    auth:
+      username: ${CASSANDRA_USER}
+      password: ${CASSANDRA_PWD}
   kafka:
     health:
       enabled: true
